@@ -1,0 +1,43 @@
+{
+  "name": "oo-redux-utils-flow-test-app",
+  "version": "0.1.1",
+  "private": true,
+  "dependencies": {
+    "flow-bin": "^0.108.0",
+    "oo-redux-utils": "^1.2.3",
+    "prettier": "^1.18.2",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-redux": "^7.1.1",
+    "react-scripts": "3.1.2",
+    "redux": "^4.0.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "flow": "flow"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "printWidth": 110,
+    "tabWidth": 2,
+    "singleQuote": true
+  }
+}
