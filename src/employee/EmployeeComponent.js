@@ -9,7 +9,6 @@ import type { EmployeeState } from './EmployeeState';
 import type { AppState } from '../AppState';
 import FetchEmployeeAction from './actions/FetchEmployeeAction';
 
-
 type MappedState = $Exact<{ ...EmployeeState, managerName: string }>;
 
 const mapAppStateToComponentProps = (appState: AppState): MappedState =>
