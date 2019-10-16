@@ -3,6 +3,7 @@
 import React from 'react';
 import type { Element } from 'react';
 import { connect } from 'react-redux';
+import { AbstractComponent } from 'oo-redux-utils';
 import type { DispatchWrapper } from 'oo-redux-utils';
 import type { AppState } from '../AppState';
 import FetchManagerAction from './actions/FetchManagerAction';
@@ -13,10 +14,9 @@ const mapAppStateToComponentProps = (appState: AppState): ManagerState => appSta
 type OwnProps = {};
 type Props = $Exact<{ ...ManagerState, ...DispatchWrapper }>;
 
-class ManagerComponent extends React.Component<Props, {}> {
+class ManagerComponent extends AbstractComponent<Props, {}> {
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch({ type: new FetchManagerAction() });
+    this.dispatch(new FetchManagerAction());
   }
 
   render(): Element<any> {

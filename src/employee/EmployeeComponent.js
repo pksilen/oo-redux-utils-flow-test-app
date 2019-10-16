@@ -3,11 +3,12 @@
 import React from 'react';
 import type { Element } from 'react';
 import { connect } from 'react-redux';
+import OOReduxUtils, { AbstractComponent } from "oo-redux-utils";
 import type { DispatchWrapper } from 'oo-redux-utils';
 import type { EmployeeState } from './EmployeeState';
 import type { AppState } from '../AppState';
-import OOReduxUtils from 'oo-redux-utils';
 import FetchEmployeeAction from './actions/FetchEmployeeAction';
+
 
 type MappedState = $Exact<{ ...EmployeeState, managerName: string }>;
 
@@ -17,10 +18,9 @@ const mapAppStateToComponentProps = (appState: AppState): MappedState =>
 type OwnProps = {};
 type Props = $Exact<{ ...MappedState, ...DispatchWrapper }>;
 
-class EmployeeComponent extends React.Component<Props, {}> {
+class EmployeeComponent extends AbstractComponent<Props, {}> {
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch({ type: new FetchEmployeeAction() });
+    this.dispatch(new FetchEmployeeAction());
   }
 
   render(): Element<any> {
