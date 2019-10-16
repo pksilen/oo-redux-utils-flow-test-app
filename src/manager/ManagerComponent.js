@@ -8,13 +8,12 @@ import type { AppState } from '../AppState';
 import FetchManagerAction from './actions/FetchManagerAction';
 import type { ManagerState } from './ManagerState';
 
-type MappedState = ManagerState;
+const mapAppStateToComponentProps = (appState: AppState): ManagerState => appState.managerState;
 
-const mapAppStateToComponentProps = (appState: AppState): MappedState => appState.managerState;
+type OwnProps = {};
+type Props = $Exact<{ ...ManagerState, ...DispatchWrapper }>;
 
-type Props = MappedState & DispatchWrapper;
-
-class ManagerView extends React.Component<Props, {}> {
+class ManagerComponent extends React.Component<Props, {}> {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({ type: new FetchManagerAction() });
@@ -32,4 +31,4 @@ class ManagerView extends React.Component<Props, {}> {
   }
 }
 
-export default connect(mapAppStateToComponentProps)(ManagerView);
+export default connect<Props, OwnProps, _, _, _, _>(mapAppStateToComponentProps)(ManagerComponent);

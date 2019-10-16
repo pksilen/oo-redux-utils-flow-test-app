@@ -6,17 +6,18 @@ import { connect } from 'react-redux';
 import type { DispatchWrapper } from 'oo-redux-utils';
 import type { EmployeeState } from './EmployeeState';
 import type { AppState } from '../AppState';
-import { OOReduxUtils } from 'oo-redux-utils';
+import OOReduxUtils from 'oo-redux-utils';
 import FetchEmployeeAction from './actions/FetchEmployeeAction';
 
 type MappedState = $Exact<{ ...EmployeeState, managerName: string }>;
 
 const mapAppStateToComponentProps = (appState: AppState): MappedState =>
-  OOReduxUtils.mergeOwnAndForeignState(appState.employeeState, { managerName: appState.managerState.name});
+  OOReduxUtils.mergeOwnAndForeignState(appState.employeeState, { managerName: appState.managerState.name });
 
-type Props = MappedState & DispatchWrapper;
+type OwnProps = {};
+type Props = $Exact<{ ...MappedState, ...DispatchWrapper }>;
 
-class EmployeeView extends React.Component<Props, {}> {
+class EmployeeComponent extends React.Component<Props, {}> {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({ type: new FetchEmployeeAction() });
@@ -35,4 +36,4 @@ class EmployeeView extends React.Component<Props, {}> {
   }
 }
 
-export default connect(mapAppStateToComponentProps)(EmployeeView);
+export default connect<Props, OwnProps, _, _, _, _>(mapAppStateToComponentProps)(EmployeeComponent);
