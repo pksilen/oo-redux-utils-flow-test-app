@@ -1,6 +1,6 @@
 {
   "name": "oo-redux-utils-flow-test-app",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "flow-bin": "^0.108.0",
