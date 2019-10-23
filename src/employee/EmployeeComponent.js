@@ -19,7 +19,7 @@ type Props = $Exact<{ ...MappedState, ...DispatchWrapper }>;
 
 class EmployeeComponent extends AbstractComponent<Props, {}> {
   componentDidMount() {
-    this.dispatch(new FetchEmployeeAction());
+    this.dispatchAction(new FetchEmployeeAction());
   }
 
   render(): Element<any> {

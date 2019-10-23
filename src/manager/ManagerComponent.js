@@ -16,7 +16,7 @@ type Props = $Exact<{ ...ManagerState, ...DispatchWrapper }>;
 
 class ManagerComponent extends AbstractComponent<Props, {}> {
   componentDidMount() {
-    this.dispatch(new FetchManagerAction());
+    this.dispatchAction(new FetchManagerAction());
   }
 
   render(): Element<any> {
